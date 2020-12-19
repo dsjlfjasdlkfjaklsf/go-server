@@ -1,0 +1,10 @@
+Mongo:
+  Host: coffee-cluster.nokes.mongodb.net
+  User: root
+  Password: root
+  Name: blog
+  
+Server:
+  Host: 127.0.0.1
+  Port: 30070
+
