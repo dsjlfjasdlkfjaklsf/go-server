@@ -1,9 +1,13 @@
 package model
 
+import (
+	primitive "go.mongodb.org/mongo-driver/bson/primitive"
+)
+
 type Comment struct {
 
 	// The ID of the Blog
-	BlogId string `json:"BlogId,omitempty"`
+	BlogId primitive.ObjectID `json:"BlogId,omitempty"`
 
 	// The name of the one who comments
 	OwnName string `json:"ownName,omitempty"`

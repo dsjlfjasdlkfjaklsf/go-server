@@ -1,6 +1,6 @@
 package model
 
-type Body struct {
+type RegistBody struct {
 
 	ID string `json:"ID,omitempty"`
 
