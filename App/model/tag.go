@@ -7,8 +7,8 @@ import (
 type Tag struct {
 
 	// The ID of the Blog
-	BlogID primitive.ObjectID `json:"BlogID,omitempty" bson:"BlogID"`
+	BlogID primitive.ObjectID `json:"BlogID" bson:"BlogID"`
 
 	// all of the tags
-	Content string `json:"content,omitempty" bson:"content"`
+	Content string `json:"content" bson:"content"`
 }

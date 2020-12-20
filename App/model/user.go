@@ -1,18 +1,13 @@
 package model
 
-import (
-	primitive "go.mongodb.org/mongo-driver/bson/primitive"
-)
-
 type UserInfo struct {
+	ID string `json:"ID" bson:"ID"`
 
-	ID primitive.ObjectID `json:"ID,omitempty" bson:"ID"`
+	Name string `json:"Name" bson:"Name"`
 
-	Name string `json:"Name,omitempty" bson:"Name"`
+	Password string `json:"Password" bson:"Password"`
 
-	Password string `json:"Password,omitempty" bson:"Password"`
+	Bio string `json:"Bio" bson:"Bio"`
 
-	Bio string `json:"Bio,omitempty" bson:"Bio"`
-
-	Level float32 `json:"Level,omitempty" bson:"Level"`
+	Level float32 `json:"Level" bson:"Level"`
 }

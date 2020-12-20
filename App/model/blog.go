@@ -6,17 +6,17 @@ import (
 
 // Blog 博客
 type Blog struct {
-	BlogID primitive.ObjectID `json:"BlogID,omitempty" bson:"BlogID"`
+	BlogID primitive.ObjectID `json:"BlogID" bson:"BlogID"`
 
-	AuthorID primitive.ObjectID `json:"AuthorID,omitempty" bson:"AuthorID"`
+	AuthorID primitive.ObjectID `json:"AuthorID" bson:"AuthorID"`
 
-	AuthorName string `json:"AuthorName,omitempty" bson:"AuthorName"`
+	AuthorName string `json:"AuthorName" bson:"AuthorName"`
 
-	CreateTime int64 `json:"CreateTime,omitempty" bson:"CreateTime"`
+	CreateTime int64 `json:"CreateTime" bson:"CreateTime"`
 
-	Title string `json:"Title,omitempty" bson:"Title"`
+	Title string `json:"Title" bson:"Title"`
 
-	Abstract string `json:"Abstract,omitempty" bson:"Abstract"`
+	Abstract string `json:"Abstract" bson:"Abstract"`
 
-	Content string `json:"Content,omitempty" bson:"Content"`
+	Content string `json:"Content" bson:"Content"`
 }

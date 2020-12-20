@@ -40,17 +40,13 @@ func (h *Handler) DecodePost(body interface{}) error {
 }
 
 // Send 发送数据
-func (h *Handler) Send(body interface{}) error {
+func (h *Handler) Send(body interface{}, state bool) (err error) {
 	h.w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	h.w.WriteHeader(http.StatusOK)
 
-	jsonbody, err := json.Marshal(body)
-	if err != nil {
-		return err
-	}
 	res := &model.Response{
-		State:    true,
-		Response: string(jsonbody)}
+		State:    state,
+		Response: body}
 
 	msg, _ := json.Marshal(res)
 	h.w.Write(msg)

@@ -6,7 +6,6 @@ import (
 
 	"github.com/dsjlfjasdlkfjaklsf/go-server/App/model"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -14,12 +13,12 @@ type UserService struct {
 	DB *mongo.Collection
 }
 
-func (service *UserService) CreateUser(id string, name string, password string) (ID primitive.ObjectID, err error) {
+func (service *UserService) CreateUser(id string, name string, password string) (ID string, err error) {
 	user := model.UserInfo{}
-	user.ID, err = primitive.ObjectIDFromHex(id)
+	user.ID = id
 	user.Name = name
 	user.Password = password
-	err = service.DB.FindOne(context.Background(), bson.D{{"ID", ID}}).Err()
+	err = service.DB.FindOne(context.Background(), bson.D{{"ID", id}}).Err()
 	if err != mongo.ErrNoDocuments {
 		return user.ID, errors.New("The userID already exists.")
 	}
@@ -28,22 +27,16 @@ func (service *UserService) CreateUser(id string, name string, password string) 
 }
 
 func (service *UserService) GetUserByID(id string) (user model.UserInfo, err error) {
-	ID, err := primitive.ObjectIDFromHex(id)
-	if err != nil {
-		return
-	}
-	err = service.DB.FindOne(context.Background(), bson.D{{"ID", ID}}).Decode(&user)
+	err = service.DB.FindOne(context.Background(), bson.D{{"ID", id}}).Decode(&user)
 	return
 }
 
-func (service *UserService) LoginUser(id string, password string) (ID primitive.ObjectID, err error) {
-	ID, err = primitive.ObjectIDFromHex(id)
-	if err != nil {
-		return
-	}
+func (service *UserService) LoginUser(id string, password string) (ID string, err error) {
 	var user model.UserInfo
-	err = service.DB.FindOne(context.Background(), bson.D{{"ID", ID}}).Decode(&user)
-	if err == nil && user.Password != password {
+	err = service.DB.FindOne(context.Background(), bson.D{{"ID", id}}).Decode(&user)
+	if err != nil {
+		err = errors.New("No such userID.")
+	} else if user.Password != password {
 		err = errors.New("The password is incorrect.")
 	}
 	return
