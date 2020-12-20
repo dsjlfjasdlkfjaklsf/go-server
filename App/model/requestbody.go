@@ -1,7 +1,6 @@
 package model
 
 type RegistBody struct {
-
 	ID string `json:"ID"`
 
 	Name string `json:"Name"`
@@ -9,26 +8,22 @@ type RegistBody struct {
 	Password string `json:"Password"`
 }
 type LoginBody struct {
-
 	ID string `json:"ID"`
 
 	Password string `json:"Password"`
 }
 type BlogBody struct {
-
 	Title string `json:"Title"`
 
 	Abstract string `json:"Abstract"`
 
 	Content string `json:"Content"`
 }
-type Body3 struct {
+type CommentBody struct {
 
-	OwnName string `json:"ownName"`
+	// The ID of the Blog
+	BlogID string `json:"BlogId"`
 
-	Content string `json:"content"`
-}
-type Body4 struct {
-
+	// The content of the comment
 	Content string `json:"content"`
 }

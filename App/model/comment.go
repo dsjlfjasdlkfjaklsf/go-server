@@ -9,6 +9,9 @@ type Comment struct {
 
 	// The ID of the Blog
 	BlogID primitive.ObjectID `json:"BlogId"`
+	
+	// The ID of the owner
+	OwnID string `json:"BlogId"`
 
 	// The name of the one who comments
 	OwnName string `json:"ownName"`

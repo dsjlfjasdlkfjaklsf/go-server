@@ -15,8 +15,8 @@ type CommentService struct {
 	DB *mongo.Collection
 }
 
-// GetCommentByBlogID 根据BlogID获得评论
-func (service *CommentService) GetCommentByBlogID(id string) (comments []model.Comment, err error) {
+// GetCommentsByBlogID 根据BlogID获得评论
+func (service *CommentService) GetCommentsByBlogID(id string) (comments []model.Comment, err error) {
 	ID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return
@@ -30,8 +30,8 @@ func (service *CommentService) GetCommentByBlogID(id string) (comments []model.C
 }
 
 // PostComment 发评论
-func (service *CommentService) PostComment(commentID string, comment model.Comment) (id primitive.ObjectID, err error) {
-	comment.BlogID, err = primitive.ObjectIDFromHex(commentID)
+func (service *CommentService) PostComment(blogID string, comment model.Comment) (id primitive.ObjectID, err error) {
+	comment.BlogID, err = primitive.ObjectIDFromHex(blogID)
 	if err != nil {
 		return
 	}
