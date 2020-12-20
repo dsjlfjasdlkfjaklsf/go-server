@@ -1,6 +1,6 @@
 package model
 
-type Body struct {
+type RegistBody struct {
 
 	ID string `json:"ID,omitempty"`
 
@@ -8,13 +8,13 @@ type Body struct {
 
 	Password string `json:"Password,omitempty"`
 }
-type Body1 struct {
+type LoginBody struct {
 
 	ID string `json:"ID,omitempty"`
 
 	Password string `json:"Password,omitempty"`
 }
-type Body2 struct {
+type BlogBody struct {
 
 	Title string `json:"Title,omitempty"`
 

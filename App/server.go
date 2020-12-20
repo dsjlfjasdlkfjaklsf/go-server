@@ -11,7 +11,7 @@ import (
 // Config 配置文件
 type Config struct {
 	Mongo  service.Mongo `yaml:"Mongo"`  // mongoDB配置
-	Server ServerConfig   `yaml:"Server"` // iris配置
+	Server ServerConfig  `yaml:"Server"` // iris配置
 }
 
 // ServerConfig 服务器配置
@@ -29,7 +29,7 @@ func RunServer(c Config) {
 		log.Fatal(err)
 	}
 	// 启动服务器
-	log.Printf("Server started")
+	log.Printf("Server started at " + c.Server.Host + ":" + c.Server.Port)
 	router := sw.NewRouter(Service)
 	log.Fatal(http.ListenAndServe(c.Server.Host+":"+c.Server.Port, router))
 	// ":8080"

@@ -29,22 +29,44 @@ func (service *BlogService) DeleteBlog(id string) (err error) {
 	if err != nil {
 		return
 	}
-	_, err = service.DB.DeleteOne(context.Background(), bson.D{{"_id", ID}})
+	_, err = service.DB.DeleteOne(context.Background(), bson.D{{"BlogID", ID}})
 	return
 }
 
 // GetBlogByBlogID 获取到某个博客
 func (service *BlogService) GetBlogByBlogID(blogID string) (blog model.Blog, err error) {
+	ID, err := primitive.ObjectIDFromHex(blogID)
+	if err != nil {
+		return
+	}
+	var blog model.Blog
+	err = service.DB.FindOne(context.Background(), bson.D{{"BlogID", ID}}).Decode(&blog)
 	return
 }
 
 // GetBlogs 获取所有人的所有博客
 func (service *BlogService) GetBlogs() (blogs []model.Blog, err error) {
-
+	cursor, err := service.DB.Find(context.Background(), bson.D{})
+	if err != nil {
+		return
+	}
+	var blogs []model.Blog
+	err = cursor.All(context.Background(), &blogs)
 	return
 }
 
-// GetBlogsByID 获取到某个人的所有
+// GetBlogsByID 获取到某个人的所有博客
 func (service *BlogService) GetBlogsByID(userID string) (blogs []model.Blog, err error) {
+	var cursor *Cursor
+	ID, err := primitive.ObjectIDFromHex(userID)
+	if err != nil {
+		return
+	}
+	cursor, err = service.DB.Find(context.Background(), bson.D{{"userID", ID}})
+	if err != nil {
+		return
+	}
+	var blogs []model.Blog
+	err = cursor.All(context.Background(), &blogs)
 	return
 }
