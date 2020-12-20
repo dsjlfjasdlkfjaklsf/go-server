@@ -39,7 +39,6 @@ func (service *BlogService) GetBlogByBlogID(blogID string) (blog model.Blog, err
 	if err != nil {
 		return
 	}
-	var blog model.Blog
 	err = service.DB.FindOne(context.Background(), bson.D{{"BlogID", ID}}).Decode(&blog)
 	return
 }
@@ -50,23 +49,20 @@ func (service *BlogService) GetBlogs() (blogs []model.Blog, err error) {
 	if err != nil {
 		return
 	}
-	var blogs []model.Blog
 	err = cursor.All(context.Background(), &blogs)
 	return
 }
 
 // GetBlogsByID 获取到某个人的所有博客
 func (service *BlogService) GetBlogsByID(userID string) (blogs []model.Blog, err error) {
-	var cursor *Cursor
 	ID, err := primitive.ObjectIDFromHex(userID)
 	if err != nil {
 		return
 	}
-	cursor, err = service.DB.Find(context.Background(), bson.D{{"userID", ID}})
+	cursor, err := service.DB.Find(context.Background(), bson.D{{"userID", ID}})
 	if err != nil {
 		return
 	}
-	var blogs []model.Blog
 	err = cursor.All(context.Background(), &blogs)
 	return
 }
