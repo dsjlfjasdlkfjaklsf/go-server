@@ -8,7 +8,7 @@ import (
 type Blog struct {
 	BlogID primitive.ObjectID `json:"BlogID" bson:"BlogID"`
 
-	AuthorID primitive.ObjectID `json:"AuthorID" bson:"AuthorID"`
+	AuthorID string `json:"AuthorID" bson:"AuthorID"`
 
 	AuthorName string `json:"AuthorName" bson:"AuthorName"`
 

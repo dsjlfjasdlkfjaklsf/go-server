@@ -19,6 +19,11 @@ type BlogBody struct {
 
 	Content string `json:"Content"`
 }
+type TagBody struct {
+	ID string `json:"ID"`
+
+	Content string `json:"Content"`
+}
 type CommentBody struct {
 
 	// The ID of the Blog

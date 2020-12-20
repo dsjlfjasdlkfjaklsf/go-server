@@ -51,7 +51,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		handler.Send(err.Error(), false)
 		return
 	}
-	token, _ := util.CreateToken(body.ID)
+	token, _ := util.CreateToken(body.ID,body.Name)
 	handler.Send(token, false)
 }
 
