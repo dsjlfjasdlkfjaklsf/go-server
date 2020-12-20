@@ -43,7 +43,7 @@ func AddBlog(w http.ResponseWriter, r *http.Request) {
 func DeleteBlog(w http.ResponseWriter, r *http.Request) {
 	handler := util.CreateHandler(w, r)
 	id := handler.DecodePath(2)
-	err = Service.Blog.DeleteBlog(id)
+	err := Service.Blog.DeleteBlog(id)
 	if err != nil {
 		handler.Send(err.Error(), false)
 		return

@@ -26,7 +26,7 @@ func (h *Handler) DecodeQuery(key string) string {
 }
 
 // DecodeToken 读取token
-func (h *Handler) DecodeToken(key string) string {
+func (h *Handler) DecodeToken() string {
 	return h.r.Header.Get("Authorization")
 }
 

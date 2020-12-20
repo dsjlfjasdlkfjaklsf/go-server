@@ -76,14 +76,14 @@ var routes = Routes{
 	Route{
 		"GetBlogs",
 		strings.ToUpper("Get"),
-		"/blog/all",
+		"/blogs",
 		GetBlogs,
 	},
 
 	Route{
 		"GetBlogsByID",
 		strings.ToUpper("Get"),
-		"/blog/{ID}/all",
+		"/blogs/{ID}",
 		GetBlogsByID,
 	},
 

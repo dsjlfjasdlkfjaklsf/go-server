@@ -28,8 +28,7 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 	}
 	token := handler.DecodeToken()
 	uid, uname, err := util.ParseToken(token)
-	_, err = Service.Comment.PostComment(body.BlogID, &model.Comment{
-		BlogID:  body.BlogID,
+	_, err = Service.Comment.PostComment(body.BlogID, model.Comment{
 		OwnID:   uid,
 		OwnName: uname,
 		Content: body.Content,

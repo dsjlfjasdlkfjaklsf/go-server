@@ -31,7 +31,7 @@ func (service *UserService) GetUserByID(id string) (user model.UserInfo, err err
 	return
 }
 
-func (service *UserService) LoginUser(id string, password string) (ID string, err error) {
+func (service *UserService) LoginUser(id string, password string) (name string, err error) {
 	var user model.UserInfo
 	err = service.DB.FindOne(context.Background(), bson.D{{"ID", id}}).Decode(&user)
 	if err != nil {
@@ -39,5 +39,6 @@ func (service *UserService) LoginUser(id string, password string) (ID string, er
 	} else if user.Password != password {
 		err = errors.New("The password is incorrect.")
 	}
+	name = user.Name
 	return
 }

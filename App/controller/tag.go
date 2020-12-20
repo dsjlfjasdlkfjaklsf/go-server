@@ -1,8 +1,10 @@
 package controller
 
 import (
-	// "github.com/dsjlfjasdlkfjaklsf/go-server/App/model"
 	"net/http"
+
+	"github.com/dsjlfjasdlkfjaklsf/go-server/App/model"
+	"github.com/dsjlfjasdlkfjaklsf/go-server/App/util"
 )
 
 func GetTagByBlogId(w http.ResponseWriter, r *http.Request) {
@@ -21,15 +23,9 @@ func PostTag(w http.ResponseWriter, r *http.Request) {
 	body := model.TagBody{}
 	err := handler.DecodePost(&body)
 	tag := model.Tag{}
-	ID, err := primitive.ObjectIDFromHex(body.ID)
-	if err != nil {
-		handler.Send(err.Error(), false)
-		return
-	}
-	tag.BlogID = ID
 	tag.Content = body.Content
-
-	_, err = Service.Tag.PostTag(tag)
+	blogID := handler.DecodePath(2)
+	_, err = Service.Tag.PostTag(blogID, tag)
 	if err != nil {
 		handler.Send(err.Error(), false)
 		return

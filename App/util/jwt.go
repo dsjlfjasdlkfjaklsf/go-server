@@ -28,7 +28,7 @@ func ParseToken(token string) (string,string, error) {
 		return []byte(secret), nil
 	})
 	if err != nil {
-		return "", err
+		return "","", err
 	}
 	return claim.Claims.(jwt.MapClaims)["uid"].(string),claim.Claims.(jwt.MapClaims)["uname"].(string), nil
 }

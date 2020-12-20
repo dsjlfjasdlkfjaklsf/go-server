@@ -46,12 +46,12 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		handler.Send(err.Error(), false)
 		return
 	}
-	_, err = Service.User.LoginUser(body.ID, body.Password)
+	uname, err := Service.User.LoginUser(body.ID, body.Password)
 	if err != nil {
 		handler.Send(err.Error(), false)
 		return
 	}
-	token, _ := util.CreateToken(body.ID,body.Name)
+	token, _ := util.CreateToken(body.ID, uname)
 	handler.Send(token, false)
 }
 
