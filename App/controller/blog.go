@@ -10,13 +10,29 @@ import (
 
 func AddBlog(w http.ResponseWriter, r *http.Request) {
 	handler := util.CreateHandler(w, r)
-	body := model.RegistBody{}
+	body := model.BlogBody{}
 	err := handler.DecodePost(&body)
 	if err != nil {
 		handler.Send(err.Error(), false)
 		return
 	}
-	_, err = Service.Blog.AddBlog(body)
+	token := handler.DecodeToken()
+
+	var uid string
+	var uname string
+	uid,uname,err = util.ParseToken(token)
+	if err != nil {
+		handler.Send(err.Error(), false)
+		return
+	}
+	blog := model.Blog{}
+	blog.AuthorID = uid
+	blog.AuthorName = uname
+	blog.Title = body.Title
+	blog.Abstract = body.Abstract
+	blog.Content = body.Content
+
+	_, err = Service.Blog.AddBlog(blog)
 	if err != nil {
 		handler.Send(err.Error(), false)
 		return

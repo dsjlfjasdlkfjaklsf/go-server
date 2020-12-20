@@ -55,11 +55,7 @@ func (service *BlogService) GetBlogs() (blogs []model.Blog, err error) {
 
 // GetBlogsByID 获取到某个人的所有博客
 func (service *BlogService) GetBlogsByID(userID string) (blogs []model.Blog, err error) {
-	ID, err := primitive.ObjectIDFromHex(userID)
-	if err != nil {
-		return
-	}
-	cursor, err := service.DB.Find(context.Background(), bson.D{{"userID", ID}})
+	cursor, err := service.DB.Find(context.Background(), bson.D{{"AuthorID", userID}})
 	if err != nil {
 		return
 	}

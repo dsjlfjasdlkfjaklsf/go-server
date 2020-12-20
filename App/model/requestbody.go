@@ -22,6 +22,12 @@ type BlogBody struct {
 
 	Content string `json:"Content"`
 }
+type TagBody struct {
+
+	ID string `json:"ID"`
+
+	Content string `json:"Content"`
+}
 type Body3 struct {
 
 	OwnName string `json:"ownName"`
