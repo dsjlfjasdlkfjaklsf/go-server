@@ -88,7 +88,7 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetCommentByBlogId",
+		"GetCommentByBlogID",
 		strings.ToUpper("Get"),
 		"/comment/{BlogID}",
 		GetCommentByBlogId,
@@ -102,7 +102,7 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetTagByBlogId",
+		"GetTagByBlogID",
 		strings.ToUpper("Get"),
 		"/tag/{BlogID}",
 		GetTagByBlogId,

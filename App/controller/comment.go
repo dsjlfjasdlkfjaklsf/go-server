@@ -21,7 +21,7 @@ func GetCommentByBlogId(w http.ResponseWriter, r *http.Request) {
 func PostComment(w http.ResponseWriter, r *http.Request) {
 	handler := util.CreateHandler(w, r)
 	body := model.CommentBody{}
-	body.BlogID = handler.DecodePath(2)
+	id := handler.DecodePath(2)
 
 	err := handler.DecodePost(&body)
 	if err != nil {
@@ -30,7 +30,7 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 	}
 	token := handler.DecodeToken()
 	uid, uname, err := util.ParseToken(token)
-	_, err = Service.Comment.PostComment(body.BlogID, model.Comment{
+	_, err = Service.Comment.PostComment(id, model.Comment{
 		OwnID:   uid,
 		OwnName: uname,
 		Content: body.Content,

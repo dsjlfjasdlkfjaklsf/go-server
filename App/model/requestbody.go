@@ -27,7 +27,7 @@ type TagBody struct {
 type CommentBody struct {
 
 	// The ID of the Blog
-	BlogID string `json:"BlogId"`
+	BlogID string `json:"BlogID"`
 
 	// The content of the comment
 	Content string `json:"content"`
