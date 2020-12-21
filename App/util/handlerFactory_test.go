@@ -23,5 +23,5 @@ func TestJsonMarshal(t *testing.T) {
 		Response: "asdasdf"}
 
 	msg, _ := json.Marshal(res)
-	assert.Equal(t, "", string(msg), "")
+	assert.Equal(t, "{\"state\":false,\"response\":\"asdasdf\"}", string(msg), "")
 }

@@ -1,5 +1,5 @@
 # Go Server for our Blog System
-
+[![Build Status](https://travis-ci.com/dsjlfjasdlkfjaklsf/go-server.svg?branch=main)](https://travis-ci.com/dsjlfjasdlkfjaklsf/go-server)
 write, manage and share your blog 
 
 ## Overview
