@@ -52,7 +52,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	token, _ := util.CreateToken(body.ID, uname)
-	handler.Send(token, false)
+	handler.Send(token, true)
 }
 
 // LogoutUser 用户登出
