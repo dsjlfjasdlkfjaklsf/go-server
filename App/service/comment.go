@@ -21,7 +21,7 @@ func (service *CommentService) GetCommentsByBlogID(id string) (comments []model.
 	if err != nil {
 		return
 	}
-	cursor, err := service.DB.Find(context.Background(), bson.D{{"BlogId", ID}})
+	cursor, err := service.DB.Find(context.Background(), bson.D{{"BlogID", ID}})
 	if err != nil {
 		return
 	}

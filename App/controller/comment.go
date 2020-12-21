@@ -21,6 +21,8 @@ func GetCommentByBlogId(w http.ResponseWriter, r *http.Request) {
 func PostComment(w http.ResponseWriter, r *http.Request) {
 	handler := util.CreateHandler(w, r)
 	body := model.CommentBody{}
+	body.BlogID = handler.DecodePath(2)
+
 	err := handler.DecodePost(&body)
 	if err != nil {
 		handler.Send(err.Error(), false)
